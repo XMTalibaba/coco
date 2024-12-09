@@ -1,0 +1,6 @@
+@import './header/index';
+@import './loading_indicator';
+
+.euiHeader--dark .euiHeaderLogo:focus {
+    background: transparent!important;
+}

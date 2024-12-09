@@ -1,0 +1,46 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.JwtAuthRoutes = void 0;
+
+var _common = require("../../../../common");
+
+/*
+ *   Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License").
+ *   You may not use this file except in compliance with the License.
+ *   A copy of the License is located at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   or in the "license" file accompanying this file. This file is distributed
+ *   on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ *   express or implied. See the License for the specific language governing
+ *   permissions and limitations under the License.
+ */
+class JwtAuthRoutes {
+  constructor(router, sessionStorageFactory) {
+    this.router = router;
+    this.sessionStorageFactory = sessionStorageFactory;
+  }
+
+  setupRoutes() {
+    this.router.post({
+      path: `${_common.API_PREFIX}${_common.API_AUTH_LOGOUT}`,
+      validate: false,
+      options: {
+        authRequired: false
+      }
+    }, async (context, request, response) => {
+      this.sessionStorageFactory.asScoped(request).clear();
+      return response.ok();
+    });
+  }
+
+}
+
+exports.JwtAuthRoutes = JwtAuthRoutes;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInJvdXRlcy50cyJdLCJuYW1lcyI6WyJKd3RBdXRoUm91dGVzIiwiY29uc3RydWN0b3IiLCJyb3V0ZXIiLCJzZXNzaW9uU3RvcmFnZUZhY3RvcnkiLCJzZXR1cFJvdXRlcyIsInBvc3QiLCJwYXRoIiwiQVBJX1BSRUZJWCIsIkFQSV9BVVRIX0xPR09VVCIsInZhbGlkYXRlIiwib3B0aW9ucyIsImF1dGhSZXF1aXJlZCIsImNvbnRleHQiLCJyZXF1ZXN0IiwicmVzcG9uc2UiLCJhc1Njb3BlZCIsImNsZWFyIiwib2siXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFpQkE7O0FBakJBOzs7Ozs7Ozs7Ozs7OztBQW1CTyxNQUFNQSxhQUFOLENBQW9CO0FBQ3pCQyxFQUFBQSxXQUFXLENBQ1FDLE1BRFIsRUFFUUMscUJBRlIsRUFHVDtBQUFBLFNBRmlCRCxNQUVqQixHQUZpQkEsTUFFakI7QUFBQSxTQURpQkMscUJBQ2pCLEdBRGlCQSxxQkFDakI7QUFBRTs7QUFFR0MsRUFBQUEsV0FBUCxHQUFxQjtBQUNuQixTQUFLRixNQUFMLENBQVlHLElBQVosQ0FDRTtBQUNFQyxNQUFBQSxJQUFJLEVBQUcsR0FBRUMsa0JBQVcsR0FBRUMsdUJBQWdCLEVBRHhDO0FBRUVDLE1BQUFBLFFBQVEsRUFBRSxLQUZaO0FBR0VDLE1BQUFBLE9BQU8sRUFBRTtBQUNQQyxRQUFBQSxZQUFZLEVBQUU7QUFEUDtBQUhYLEtBREYsRUFRRSxPQUFPQyxPQUFQLEVBQWdCQyxPQUFoQixFQUF5QkMsUUFBekIsS0FBc0M7QUFDcEMsV0FBS1gscUJBQUwsQ0FBMkJZLFFBQTNCLENBQW9DRixPQUFwQyxFQUE2Q0csS0FBN0M7QUFDQSxhQUFPRixRQUFRLENBQUNHLEVBQVQsRUFBUDtBQUNELEtBWEg7QUFhRDs7QUFwQndCIiwic291cmNlc0NvbnRlbnQiOlsiLypcbiAqICAgQ29weXJpZ2h0IDIwMjAgQW1hem9uLmNvbSwgSW5jLiBvciBpdHMgYWZmaWxpYXRlcy4gQWxsIFJpZ2h0cyBSZXNlcnZlZC5cbiAqXG4gKiAgIExpY2Vuc2VkIHVuZGVyIHRoZSBBcGFjaGUgTGljZW5zZSwgVmVyc2lvbiAyLjAgKHRoZSBcIkxpY2Vuc2VcIikuXG4gKiAgIFlvdSBtYXkgbm90IHVzZSB0aGlzIGZpbGUgZXhjZXB0IGluIGNvbXBsaWFuY2Ugd2l0aCB0aGUgTGljZW5zZS5cbiAqICAgQSBjb3B5IG9mIHRoZSBMaWNlbnNlIGlzIGxvY2F0ZWQgYXRcbiAqXG4gKiAgICAgICBodHRwOi8vd3d3LmFwYWNoZS5vcmcvbGljZW5zZXMvTElDRU5TRS0yLjBcbiAqXG4gKiAgIG9yIGluIHRoZSBcImxpY2Vuc2VcIiBmaWxlIGFjY29tcGFueWluZyB0aGlzIGZpbGUuIFRoaXMgZmlsZSBpcyBkaXN0cmlidXRlZFxuICogICBvbiBhbiBcIkFTIElTXCIgQkFTSVMsIFdJVEhPVVQgV0FSUkFOVElFUyBPUiBDT05ESVRJT05TIE9GIEFOWSBLSU5ELCBlaXRoZXJcbiAqICAgZXhwcmVzcyBvciBpbXBsaWVkLiBTZWUgdGhlIExpY2Vuc2UgZm9yIHRoZSBzcGVjaWZpYyBsYW5ndWFnZSBnb3Zlcm5pbmdcbiAqICAgcGVybWlzc2lvbnMgYW5kIGxpbWl0YXRpb25zIHVuZGVyIHRoZSBMaWNlbnNlLlxuICovXG5cbmltcG9ydCB7IElSb3V0ZXIsIFNlc3Npb25TdG9yYWdlRmFjdG9yeSB9IGZyb20gJ2tpYmFuYS9zZXJ2ZXInO1xuaW1wb3J0IHsgU2VjdXJpdHlTZXNzaW9uQ29va2llIH0gZnJvbSAnLi4vLi4vLi4vc2Vzc2lvbi9zZWN1cml0eV9jb29raWUnO1xuaW1wb3J0IHsgQVBJX0FVVEhfTE9HT1VULCBBUElfUFJFRklYIH0gZnJvbSAnLi4vLi4vLi4vLi4vY29tbW9uJztcblxuZXhwb3J0IGNsYXNzIEp3dEF1dGhSb3V0ZXMge1xuICBjb25zdHJ1Y3RvcihcbiAgICBwcml2YXRlIHJlYWRvbmx5IHJvdXRlcjogSVJvdXRlcixcbiAgICBwcml2YXRlIHJlYWRvbmx5IHNlc3Npb25TdG9yYWdlRmFjdG9yeTogU2Vzc2lvblN0b3JhZ2VGYWN0b3J5PFNlY3VyaXR5U2Vzc2lvbkNvb2tpZT5cbiAgKSB7fVxuXG4gIHB1YmxpYyBzZXR1cFJvdXRlcygpIHtcbiAgICB0aGlzLnJvdXRlci5wb3N0KFxuICAgICAge1xuICAgICAgICBwYXRoOiBgJHtBUElfUFJFRklYfSR7QVBJX0FVVEhfTE9HT1VUfWAsXG4gICAgICAgIHZhbGlkYXRlOiBmYWxzZSxcbiAgICAgICAgb3B0aW9uczoge1xuICAgICAgICAgIGF1dGhSZXF1aXJlZDogZmFsc2UsXG4gICAgICAgIH0sXG4gICAgICB9LFxuICAgICAgYXN5bmMgKGNvbnRleHQsIHJlcXVlc3QsIHJlc3BvbnNlKSA9PiB7XG4gICAgICAgIHRoaXMuc2Vzc2lvblN0b3JhZ2VGYWN0b3J5LmFzU2NvcGVkKHJlcXVlc3QpLmNsZWFyKCk7XG4gICAgICAgIHJldHVybiByZXNwb25zZS5vaygpO1xuICAgICAgfVxuICAgICk7XG4gIH1cbn1cbiJdfQ==

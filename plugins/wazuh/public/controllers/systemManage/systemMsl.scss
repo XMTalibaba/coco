@@ -1,0 +1,28 @@
+.box{
+  font-size: 20px;
+    line-height: 30px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #fafafa;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+  .boxItem{
+    margin: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 45%;
+    justify-content: space-around;
+    align-items: center;
+  
+    .title{
+      width: 100%;
+      text-align: center;
+    }
+.left{
+width:60%
+}
+.right{
+
+}
+  }
+}

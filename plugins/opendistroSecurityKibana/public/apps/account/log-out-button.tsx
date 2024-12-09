@@ -1,0 +1,60 @@
+/*
+ *   Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License").
+ *   You may not use this file except in compliance with the License.
+ *   A copy of the License is located at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   or in the "license" file accompanying this file. This file is distributed
+ *   on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ *   express or implied. See the License for the specific language governing
+ *   permissions and limitations under the License.
+ */
+
+import React from 'react';
+import { EuiButtonEmpty } from '@elastic/eui';
+import { HttpStart } from 'kibana/public';
+import { logout } from './utils';
+
+export function LogoutButton(props: {
+  authType: string;
+  http: HttpStart;
+  divider: JSX.Element;
+  logoutUrl?: string;
+  username?:string;
+}) {
+  if (props.authType === 'openid' || props.authType === 'saml') {
+    return (
+      <div>
+        {props.divider}
+        <EuiButtonEmpty
+          data-test-subj="log-out-1"
+          color="danger"
+          size="xs"
+          href={`${props.http.basePath.serverBasePath}/auth/logout`}
+        >
+          退出登录
+        </EuiButtonEmpty>
+      </div>
+    );
+  } else if (props.authType === 'proxy') {
+    return <div />;
+  } else {
+    return (
+      <div>
+        {props.divider}
+        <EuiButtonEmpty
+          data-test-subj="log-out-2"
+          color="danger"
+          size="xs"
+          onClick={() => logout(props.http, props.logoutUrl,props.username)}
+        >
+          
+          退出登录
+        </EuiButtonEmpty>
+      </div>
+    );
+  }
+}

@@ -1,0 +1,144 @@
+.Workspace{
+ 
+    .box{
+  
+    
+      .boxbg{
+        // background-color: #01132d;
+        display: flex;
+      }
+      .right{
+        margin-left: 1vh;
+        .r1{
+          width: 37vh;
+          height: 30vh;
+      
+        }
+        .r2{
+          width: 37vh;
+          height: 40vh;
+          margin-top: 2vh;
+     
+        }
+        .r3{
+       
+          width: 37vh;
+          height: 15vh;
+          margin-top: 2vh;
+          
+      }
+      }
+      .left{
+        margin-right: 1vh;
+        .lt{
+          width: 40vh;
+          height: 40vh;
+           .border-box-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+              }
+         
+        }
+        .lc{
+          width: 40vh;
+          height: 20vh;
+         
+        }
+        .lb{
+          width: 40vh;
+          height: 40vh;
+          margin-top: 1vh;
+          // .border-box-content{
+          //   display: flex;
+          //   justify-content: center;
+          //   align-items: center;
+          //     }
+        }
+      }
+    .cbx{
+      width: 100vh;
+      height: 100vh;
+     .cb{
+       width: 100vh;
+       height: 32vh;
+       margin-top: 3vh;
+   
+     }
+      .center{
+        width: 100vh;
+        height: 60vh;
+    
+       .dsc{
+      
+          display: flex;
+          justify-content: space-between;
+       
+      
+       }
+       .ct1{
+         width: 100%;
+         height: 100%;
+        background: url("../../../assets/bg.png") center center/ cover;
+        position: relative;
+       }
+       .ct2{
+      
+       background: url("../../../assets/lbx.png") center center/ 50% no-repeat;
+       width: 100%;
+       height: 100%;
+       background-size: 55vh 55vh;
+       -webkit-animation: retate2 10s linear infinite;
+       animation: retate2 10s linear infinite;
+     
+       }
+       @keyframes retate2 {
+        0% {
+        transform: rotate(0deg);
+        }
+        100% {
+        transform: rotate(360deg);
+        }
+        }
+        @keyframes retate1 {
+          0% {
+          transform: rotate(360deg);
+          }
+          100% {
+          transform: rotate(0deg);
+          }
+          }
+        .ct3{
+          background: url("../../../assets/map.png") center center/ 50% no-repeat;
+          width: 100%;
+          height: 100%;
+          background-size: 46vh 46vh;
+          position: absolute;
+          
+          top: 0;
+          .fly{
+            background: url("../../../assets/jt.png") center center/ 50% no-repeat;
+            width: 100%;
+            height: 100%;
+            background-size: 55vh 55vh;
+            -webkit-animation: retate2110s linear infinite;
+       animation: retate1 10s linear infinite;
+           
+           }
+        }
+      }
+    }
+    
+    .rt{
+    
+    }
+    .rb{
+    
+    }
+    }
+    
+    
+    }
+    
+    
+    

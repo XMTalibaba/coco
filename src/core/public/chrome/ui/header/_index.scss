@@ -1,0 +1,60 @@
+@include euiHeaderAffordForFixed;
+
+.chrHeaderHelpMenu__version {
+  text-transform: none;
+}
+
+.chrHeaderBadge__wrapper {
+  align-self: center;
+  margin-right: $euiSize;
+}
+
+.header__toggleNavButtonSection {
+  .euiBody--collapsibleNavIsDocked & {
+    // display: none;
+  }
+}
+
+.newLogo__wrapper {
+  color: #fff;
+  span{
+    font-size: 19px
+  }
+  img {
+    vertical-align: middle;
+    margin: 0 10px;
+    height: 38px;
+  }
+}
+
+.euiHeader--dark { // 隐藏导航右上角新闻按钮
+  >div:nth-child(3) {
+    .euiHeaderSectionItem:nth-child(1) {
+      display: none;
+    }
+  }
+}
+#globalHeaderBars .euiHeader--dark{
+  background: #2d8cf0;
+  border-bottom: none;
+  -webkit-box-shadow: 0 7px 10px -6px rgba(30, 100, 170, 0.9)!important;
+  -moz-box-shadow: 0 7px 10px -6px rgba(30, 100, 170, 0.9)!important;
+  box-shadow: 0 7px 10px -6px rgba(30, 100, 170, 0.9)!important;
+  .header_version_icon {
+    color: #fff;
+    .euiIcon--medium {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+.header_version_panel.euiPopover__panel {
+  transform: translateY(-8px) translateZ(0) !important;
+}
+.header_version_panel.euiPopover__panel.euiPopover__panel-isOpen.euiPopover__panel--bottom {
+  overflow-y: visible!important;
+  transform: translateY(-16px) translateZ(0) !important;
+}
+.header_user_panel {
+  overflow-y: visible!important;
+}

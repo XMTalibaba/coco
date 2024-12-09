@@ -1,0 +1,159 @@
+/*
+ *   Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License").
+ *   You may not use this file except in compliance with the License.
+ *   A copy of the License is located at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   or in the "license" file accompanying this file. This file is distributed
+ *   on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ *   express or implied. See the License for the specific language governing
+ *   permissions and limitations under the License.
+ */
+
+.login-wrapper {
+    margin: 10% auto;
+    width: 350px;
+    padding: 1rem;
+    position: relative;
+}
+
+.btn-login {
+    width: 100%;
+}
+.emailstyle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    .euiModalHeader__title{
+font-size: 18px;
+    }
+ 
+}
+.emailstylenone{
+    display: none;
+}
+.application {
+    // background-color: #2881eb;
+    // background-image: linear-gradient(to right, #0B68D6, #0042AB);
+    background-color: #3971F5;
+}
+.application >div {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+}
+.login-wrapper-box {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.login-wrapper-header-box {
+    height: 90px;
+    background: rgba(38, 53, 76, 0.2);
+
+    .login-wrapper-header {
+        height: 90px;
+        display: flex;
+        font-size: 34px;
+        font-weight: 600;
+    
+    align-items: center;
+        width: 1000px;
+        margin: 0 auto;
+        color: #fff;
+        img {
+            height: 56px;
+            margin-right: 10px;
+        }
+    }
+}
+.login-wrapper-contain {
+    width: 1000px;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10%;
+    .login-banner {
+        width: 450px;
+        img {
+            width: 450px;
+        }
+        p {
+            color: #fff;
+            font-size: 16px;
+            margin-top: 20px;
+            line-height: 26px;
+        }
+    }
+    .login-wrapper {
+        margin: 0;
+        // background: #fff;
+        border-radius: 4px;
+        width: 355px;
+    }
+    .euiSpacer--m {
+        height: 30px;
+    }
+    .login-title {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 24px;
+    }
+    .euiButton--primary.euiButton--fill {
+        background-color: transparent;
+        border-color: #fff;
+    }
+    .euiFormRow + .euiFormRow {
+        margin-top: 30px;
+    }
+    .euiFormControlLayout {
+        height: 42px;
+    }
+    .euiFormControlLayout--group {
+        background: transparent;
+        box-shadow: none;
+        border-bottom: 1px solid #fff;
+    }
+    .euiFormControlLayout--group .euiFormControlLayout__prepend.euiIcon {
+        background-color: transparent;
+    }
+    .euiFieldText {
+        background-color: transparent;
+        color: #fff;
+    }
+    .euiFieldText::-webkit-input-placeholder {
+        color: #fff;
+    }
+    .euiFieldText:-moz-placeholder {/* Firefox 18- */
+        color: #fff;
+    }
+    .euiFieldText::-moz-placeholder{/* Firefox 19+ */
+       color: #fff;
+    }
+    .euiFieldText:-ms-input-placeholder {
+        color: #fff;
+    }
+    .euiButton {
+        height: 48px;
+        font-size: 20px;
+    }
+    .euiButton--primary.euiButton--fill:enabled:hover {
+        background-color: transparent;
+        border-color: #fff;
+        opacity: 0.7;
+    }
+    .euiButton--primary:enabled:hover {
+        box-shadow: none;
+    }
+}
+.login-wrapper-footer {
+    color: #fff;
+    padding: 20px 0;
+    background: rgba(38, 53, 76, 0.2);
+}

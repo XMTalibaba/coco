@@ -1,0 +1,146 @@
+<!-- head -->
+<div ng-cloak ng-controller="settingsController as ctrl">
+  <div ng-show="ctrl.load" style="padding: 16px">
+    <react-component name="EuiProgress" props="{size: 'xs', color: 'primary'}"></react-component>
+  </div>
+
+  <div
+    ng-if="!ctrl.load && ctrl.settingsTabsProps && !ctrl.apiIsDown && ctrl.apiTableProps.apiEntries.length && ctrl.tab !== 'api'"
+    class="wz-margin-top-16 md-margin-h"
+  >
+    <react-component name="Tabs" props="ctrl.settingsTabsProps"></react-component>
+  </div>
+  <!-- end head -->
+  <!-- api -->
+  <div ng-if="ctrl.tab === 'api' && !ctrl.load">
+    <!-- API table section-->
+    <div ng-if="ctrl.apiEntries.length && !ctrl.addingApi && !ctrl.apiIsDown">
+      <react-component name="ApiTable" props="ctrl.apiTableProps"></react-component>
+    </div>
+
+    <!-- Add API section-->
+    <div layout="row" layout-padding ng-if="!ctrl.apiEntries.length || ctrl.addingApi">
+      <react-component flex name="AddApi" props="ctrl.addApiProps"></react-component>
+    </div>
+
+    <!-- API is down section-->
+    <div layout="column" layout-padding ng-if="ctrl.apiIsDown && !ctrl.addingApi">
+      <react-component name="ApiIsDown" props="ctrl.apiIsDownProps"></react-component>
+    </div>
+  </div>
+  <!-- End API configuration card section -->
+  <!-- end api -->
+  <!-- modules -->
+  <div ng-if="ctrl.tab === 'modules' && !ctrl.load">
+    <react-component name="EnableModules" props="{}"></react-component>
+  </div>
+  <!-- end modules -->
+  <!-- configuration -->
+  <div ng-if="ctrl.tab === 'configuration' && !ctrl.load">
+    <react-component
+      name="WzConfigurationSettings"
+      props="ctrl.settingsTabsProps"
+    ></react-component>
+  </div>
+  <!-- end configuration -->
+  <!-- logs -->
+  <div ng-if="ctrl.tab === 'logs' && !ctrl.load">
+    <react-component name="SettingsLogs" props="ctrl.settingsLogsProps"></react-component>
+  </div>
+  <!-- end logs -->
+  <!-- about -->
+  <div ng-if="ctrl.tab === 'about' && !ctrl.load">
+    <div class="euiPage euiPageBody">
+      <!-- App information section -->
+      <div ng-if="!ctrl.load">
+        <div class="euiCallOut euiCallOut--primary" style="display: flex">
+          <div class="wz-text-truncatable" flex>
+            应用版本: <span class="wz-text-bold">{{ctrl.appInfo["app-version"]}}</span>
+          </div>
+          <div class="wz-text-truncatable" flex>
+            应用修订: <span class="wz-text-bold">{{ctrl.appInfo["revision"]}}</span>
+          </div>
+          <div class="wz-text-truncatable" flex>
+            安装日期:
+            <span class="wz-text-bold">{{ctrl.appInfo["installationDate"] | date : "medium"}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- End app information section -->
+      <div class="euiSpacer euiSpacer--l"></div>
+      <div
+        class="euiFlexGroup euiFlexGroup--gutterLarge euiFlexGroup--directionRow euiFlexGroup--responsive"
+      >
+        <div class="euiFlexItem">
+          <div class="euiPanel euiPanel--paddingLarge">
+            <div
+              class="euiFlexGroup euiFlexGroup--gutterLarge euiFlexGroup--directionRow euiFlexGroup--responsive"
+            >
+              <div class="euiFlexItem euiFlexItem--flexGrowZero">
+                <div
+                  class="euiFlexGroup euiFlexGroup--gutterLarge euiFlexGroup--directionRow euiFlexGroup--responsive"
+                >
+                  <div class="euiFlexItem">
+                    <h2 class="euiTitle euiTitle--medium">
+                      欢迎来到Kibana {{ctrl.kibanaVersion}}的应用程序 。
+                    </h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="euiSpacer euiSpacer--l"></div>
+            <div class="euiText euiText--medium">
+              <p>
+                Kibana插件提供管理和监控功能，使用户能够控制基础设施。使用该插件，您可以监控代理的状态和配置，查询和可视化警报数据，监控经理的规则和配置。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="euiFlexItem">
+          <div class="euiPanel euiPanel--paddingLarge">
+            <div
+              class="euiFlexGroup euiFlexGroup--gutterLarge euiFlexGroup--directionRow euiFlexGroup--responsive"
+            >
+              <div class="euiFlexItem euiFlexItem--flexGrowZero">
+                <div
+                  class="euiFlexGroup euiFlexGroup--gutterLarge euiFlexGroup--directionRow euiFlexGroup--responsive"
+                >
+                  <div class="euiFlexItem">
+                    <h2 class="euiTitle euiTitle--medium">社区</h2>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="euiSpacer euiSpacer--m"></div>
+            <div class="euiText euiText--medium">
+              <p>请享受您的体验，并请不要犹豫，给我们提供您的反馈。</p>
+            </div>
+            <div class="euiSpacer euiSpacer--l"></div>
+            <div layout="row" class="layout-align-center-center" flex>
+              <react-component
+                name="EuiButtonIcon"
+                props="{iconType:'logoSlack', iconSize:'xxl', href: 'https://wazuh.com/community/join-us-on-slack/', target: '_blank', 'aria-label': 'Wazuh Slack'}"
+              ></react-component>
+              <react-component
+                class="wz-margin-left-16"
+                name="EuiButtonIcon"
+                props="{iconType:'logoGmail', iconSize:'xxl', href: 'https://groups.google.com/forum/#!forum/wazuh', target: '_blank', 'aria-label': 'Wazuh forum'}"
+              ></react-component>
+              <react-component
+                class="wz-margin-left-16"
+                name="EuiButtonIcon"
+                props="{iconType:'logoGithub', iconSize:'xxl', href: 'https://github.com/wazuh/wazuh-kibana-app', target: '_blank', 'aria-label': 'Wazuh app Github'}"
+              ></react-component>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end about -->
+  <!-- sample data -->
+  <div ng-if="ctrl.tab === 'sample_data' && !ctrl.load">
+    <react-component name="WzSampleDataWrapper" props="{}"></react-component>
+  </div>
+  <!-- end sample data -->
+</div>

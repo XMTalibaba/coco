@@ -1,0 +1,75 @@
+{
+  "name": "wazuh",
+  "version": "4.1.5",
+  "revision": "4108",
+  "code": "4108-0",
+  "kibana": {
+    "version": "7.10.2"
+  },
+  "description": "Wazuh app",
+  "keywords": [
+    "kibana",
+    "wazuh",
+    "ossec"
+  ],
+  "node_build": "8.14.0",
+  "author": "Wazuh, Inc",
+  "license": "GPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wazuh/wazuh-kibana-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wazuh/wazuh-kibana-app/issues"
+  },
+  "homepage": "https://www.wazuh.com/",
+  "scripts": {
+    "pretty": "prettier --single-quote \"{,!(node_modules)/**/}*.js\" --write",
+    "tslint": "tslint -c .tslint.yml server/**/*.ts server/**/*.tsx public/**/*.ts public/**/*.tsx",
+    "lint": "eslint . --ext .js -c .eslintrc.json --color",
+    "kbn": "node ../../scripts/kbn",
+    "es": "node ../../scripts/es",
+    "start": "plugin-helpers start",
+    "build": "yarn plugin-helpers build --kibana-version=$KIBANA_VERSION",
+    "plugin-helpers": "node ../../scripts/plugin_helpers",
+    "test:ui:runner": "node ../../scripts/functional_test_runner.js",
+    "test:server": "plugin-helpers test:server",
+    "test:browser": "plugin-helpers test:browser",
+    "test:jest": "node scripts/jest",
+    "generate:api-4.0-info": "cd scripts/generate-api-4.0-info;./generate-api-4.0-info.sh;cd ../..",
+    "prebuild": "node scripts/generate-build-version"
+  },
+  "dependencies": {
+    "@jiaminghi/data-view-react": "^1.2.5",
+    "angular-animate": "1.7.8",
+    "angular-chart.js": "1.1.1",
+    "angular-material": "1.1.18",
+    "antd": "^5.12.4",
+    "axios": "^0.19.2",
+    "dom-to-image": "^2.6.0",
+    "echarts": "^5.3.2",
+    "html2canvas": "^1.4.1",
+    "install": "^0.10.1",
+    "js2xmlparser": "^3.0.0",
+    "json2csv": "^4.1.2",
+    "jspdf": "^2.5.1",
+    "jwt-decode": "^2.2.0",
+    "needle": "^2.0.1",
+    "node-cron": "^1.1.2",
+    "pdfmake": "^0.1.65",
+    "pug-loader": "^2.4.0",
+    "querystring-browser": "1.0.4",
+    "react-awesome-swiper": "^1.4.16",
+    "react-codemirror": "^1.0.0",
+    "react-cookie": "^4.0.3",
+    "read-last-lines": "^1.7.2",
+    "timsort": "^0.3.0",
+    "winston": "3.0.0"
+  },
+  "devDependencies": {
+    "@types/node-cron": "^2.0.3",
+    "eslint-plugin-async-await": "^0.0.0",
+    "tslint": "^5.11.0",
+    "typescript-eslint-parser": "^18.0.0"
+  }
+}

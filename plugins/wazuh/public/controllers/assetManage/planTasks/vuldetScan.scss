@@ -1,0 +1,9 @@
+.planTask_vuldetScan_radioGroup {
+  display: flex;
+  .euiRadioGroup__item + .euiRadioGroup__item {
+    margin-top: 0;
+  }
+  .euiRadioGroup__item {
+    margin-right: 20px;
+  }
+}

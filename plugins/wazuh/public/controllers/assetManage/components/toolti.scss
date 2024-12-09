@@ -1,0 +1,25 @@
+.Workspace{
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  .atop{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    line-height: 30px;
+    .lead{
+      margin: 20px;
+    }
+    .peo{
+      margin: 20px;
+    
+    }
+    .zhui{
+     
+    }
+  }
+  .abot{
+
+  }
+
+}

@@ -1,0 +1,43 @@
+.custom_input_file_box_blackWhite {
+  position: relative;
+  .euiFileUpload {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  &:hover {
+    transform: translateY(-1px);
+    .euiButton {
+      transform: none !important;
+    }
+    .euiButton__text {
+      text-decoration: underline;
+    }
+    .euiButton {
+      box-shadow: 0 4px 8px 0 rgba(54, 97, 126, 0.15), 0 2px 2px -1px rgba(54, 97, 126, 0.3);
+      background-color: rgba(0, 107, 180, 0.1);
+      transform: translateY(-1px);
+    }
+  }
+}
+.columnTabs {
+  display: flex;
+  flex-direction: column;
+  width: 120px;
+  overflow: visible;
+  .euiTab {
+    text-align: right;
+    padding-right: 20px;
+    padding-left: 10px;
+  }
+  &:not(.euiTabs--condensed)::before {
+    height: 0;
+  }
+  .euiTab.euiTab-isSelected::after {
+    height: 100%;
+    width: 2px;
+    right: 0;
+    left: auto;
+  }
+}

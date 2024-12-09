@@ -1,0 +1,42 @@
+<div ng-cloak flex="auto" ng-controller="assetsController as ctrl" layout="column">
+	<div class="md-padding md-padding-top-16" ng-show="ctrl.init || ctrl.loading">
+    <react-component name="EuiProgress" props="{size: 'xs', color: 'primary'}"></react-component>
+  </div>
+	<div
+    ng-if="!ctrl.init && !ctrl.loading"
+    layout="column"
+    layout-align="start space-around"
+  >
+    <div class="registerAgent" ng-show="ctrl.addingNewAgent">
+      <react-component
+				name="ProbeDownload"
+				props="ctrl.probeDownloadProps"
+			></react-component>
+		</div>
+		<div ng-show="!ctrl.addingNewAgent && !ctrl.batchDeployment">
+			<react-component
+				name="ManageTool"
+				props="{ manageToolProps: ctrl.installToolsProps }"
+			></react-component>
+    </div>
+		<div ng-if="ctrl.batchDeployment">
+			<react-component
+				name="BatchDeployment"
+				props="ctrl.batchDeploymentProps"
+			></react-component>
+    </div>
+  </div>
+
+	<!-- <div ng-show="!ctrl.addingNewAgent">
+		<react-component
+			name="ManageTool"
+			props="{ manageToolProps: ctrl.installToolsProps }"
+		></react-component>
+	</div>
+	<div ng-show="ctrl.addingNewAgent">
+		<react-component
+			name="ProbeDownload"
+			props="ctrl.probeDownloadProps"
+		></react-component>
+	</div> -->
+</div>

@@ -1,0 +1,957 @@
+{
+  "active-response:command": {
+    "description": "允许在代理中执行主动响应命令",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "active-response:command"
+      ],
+      "resources": [
+        "agent:id:001"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /active-response"
+    ]
+  },
+  "agent:delete": {
+    "description": "删除系统的代理",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "agent:delete"
+      ],
+      "resources": [
+        "agent:id:010"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "DELETE /agents"
+    ]
+  },
+  "agent:read": {
+    "description": "访问一个或多个代理的基本信息(id、名称、组、最后连接时间等)",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "agent:read"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /agents",
+      "GET /agents/{agent_id}/config/{component}/{configuration}",
+      "GET /agents/{agent_id}/group/is_sync",
+      "GET /agents/{agent_id}/key",
+      "GET /groups/{group_id}/agents",
+      "GET /agents/no_group",
+      "GET /agents/outdated",
+      "GET /agents/stats/distinct",
+      "GET /agents/summary/os",
+      "GET /agents/summary/status",
+      "GET /overview/agents"
+    ]
+  },
+  "agent:create": {
+    "description": "创建新的代理",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "agent:create"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "POST /agents",
+      "POST /agents/insert",
+      "POST /agents/insert/quick"
+    ]
+  },
+  "agent:modify_group": {
+    "description": "修改指定代理的组",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "agent:modify_group"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "DELETE /agents/{agent_id}/group",
+      "DELETE /agents/{agent_id}/group/{group_id}",
+      "PUT /agents/{agent_id}/group/{group_id}",
+      "DELETE /agents/group",
+      "PUT /agents/group",
+      "DELETE /groups"
+    ]
+  },
+  "group:modify_assignments": {
+    "description": "允许更改分配给组的代理",
+    "resources": [
+      "group:id"
+    ],
+    "example": {
+      "actions": [
+        "group:modify_assignments"
+      ],
+      "resources": [
+        "group:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "DELETE /agents/{agent_id}/group",
+      "DELETE /agents/{agent_id}/group/{group_id}",
+      "PUT /agents/{agent_id}/group/{group_id}",
+      "DELETE /agents/group",
+      "PUT /agents/group",
+      "DELETE /groups"
+    ]
+  },
+  "agent:restart": {
+    "description": "为允许的代理重新启动Wazuh",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "agent:restart"
+      ],
+      "resources": [
+        "agent:id:050",
+        "agent:id:049"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "PUT /agents/{agent_id}/restart",
+      "PUT /agents/group/{group_id}/restart",
+      "PUT /agents/node/{node_id}/restart",
+      "PUT /agents/restart"
+    ]
+  },
+  "agent:upgrade": {
+    "description": "升级代理版本",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "agent:upgrade"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /agents/{agent_id}/upgrade",
+      "PUT /agents/{agent_id}/upgrade_custom",
+      "GET /agents/{agent_id}/upgrade_result"
+    ]
+  },
+  "group:delete": {
+    "description": "删除系统的组",
+    "resources": [
+      "group:id"
+    ],
+    "example": {
+      "actions": [
+        "group:delete"
+      ],
+      "resources": [
+        "group:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "DELETE /groups"
+    ]
+  },
+  "group:read": {
+    "description": "访问一个或多个组的基本信息(id、名称、代理等)",
+    "resources": [
+      "group:id"
+    ],
+    "example": {
+      "actions": [
+        "group:create"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /groups",
+      "GET /groups/{group_id}/agents",
+      "GET /groups/{group_id}/configuration",
+      "GET /groups/{group_id}/files",
+      "GET /groups/{group_id}/files/{file_name}/json",
+      "GET /groups/{group_id}/files/{file_name}/xml",
+      "GET /overview/agents"
+    ]
+  },
+  "group:create": {
+    "description": "创建新组",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "group:create"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "POST /groups"
+    ]
+  },
+  "group:update_config": {
+    "description": "修改组的配置",
+    "resources": [
+      "group:id"
+    ],
+    "example": {
+      "actions": [
+        "group:update_config"
+      ],
+      "resources": [
+        "group:id:*"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "PUT /groups/{group_id}/configuration"
+    ]
+  },
+  "cluster:read": {
+    "description": "阅读Wazuh的集群配置",
+    "resources": [
+      "node:id"
+    ],
+    "example": {
+      "actions": [
+        "cluster:read"
+      ],
+      "resources": [
+        "node:id:worker1",
+        "node:id:worker3"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "PUT /agents/node/{node_id}/restart",
+      "GET /cluster/local/info",
+      "GET /cluster/nodes",
+      "GET /cluster/healthcheck",
+      "GET /cluster/local/config",
+      "GET /cluster/{node_id}/status",
+      "GET /cluster/{node_id}/info",
+      "GET /cluster/{node_id}/configuration",
+      "GET /cluster/{node_id}/stats",
+      "GET /cluster/{node_id}/stats/hourly",
+      "GET /cluster/{node_id}/stats/weekly",
+      "GET /cluster/{node_id}/stats/analysisd",
+      "GET /cluster/{node_id}/stats/remoted",
+      "GET /cluster/{node_id}/logs",
+      "GET /cluster/{node_id}/logs/summary",
+      "PUT /cluster/{node_id}/configuration",
+      "PUT /cluster/restart",
+      "GET /cluster/configuration/validation",
+      "GET /cluster/{node_id}/configuration/{component}/{configuration}"
+    ]
+  },
+  "ciscat:read": {
+    "description": "获取代理列表的CIS-CAT结果",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "ciscat:read"
+      ],
+      "resources": [
+        "agent:id:001",
+        "agent:id:003"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "GET /ciscat/{agent_id}/results",
+      "GET /experimental/ciscat/results"
+    ]
+  },
+  "cluster:status": {
+    "description": "检查Wazuh的集群状态",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "cluster:status"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /cluster/status"
+    ]
+  },
+  "cluster:read_api_config": {
+    "description": "检查Wazuh的集群API配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "cluster:read_api_config"
+      ],
+      "resources": [
+        "node:id:worker1",
+        "node:id:worker3"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /cluster/api/config"
+    ]
+  },
+  "cluster:update_api_config": {
+    "description": "修改Wazuh的集群API配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "cluster:update_api_config"
+      ],
+      "resources": [
+        "node:id:worker1",
+        "node:id:worker3"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /cluster/api/config",
+      "DELETE /cluster/api/config"
+    ]
+  },
+  "cluster:update_config": {
+    "description": "更新Wazuh集群节点的配置",
+    "resources": [
+      "node:id"
+    ],
+    "example": {
+      "actions": [
+        "cluster:update_config"
+      ],
+      "resources": [
+        "node:id:worker1"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /cluster/{node_id}/configuration"
+    ]
+  },
+  "cluster:restart": {
+    "description": "重启Wazuh的集群节点",
+    "resources": [
+      "node:id"
+    ],
+    "example": {
+      "actions": [
+        "cluster:restart"
+      ],
+      "resources": [
+        "node:id:worker1"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /cluster/restart"
+    ]
+  },
+  "lists:read": {
+    "description": "读取列表文件",
+    "resources": [
+      "list:file"
+    ],
+    "example": {
+      "actions": [
+        "lists:read"
+      ],
+      "resources": [
+        "list:file:audit-keys"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "GET /lists",
+      "GET /lists/files"
+    ]
+  },
+  "lists:update": {
+    "description": "更新列表文件",
+    "resources": [
+      "list:file",
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "lists:update"
+      ],
+      "resources": [
+        "list:file:audit-keys"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [      
+      "PUT /lists/files"
+    ]
+  },
+  "lists:delete": {
+    "description": "删除列表文件",
+    "resources": [
+      "list:file"
+    ],
+    "example": {
+      "actions": [
+        "lists:delete"
+      ],
+      "resources": [
+        "list:file:audit-keys"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [      
+      "DELETE /lists/files"
+    ]
+  },
+  "manager:read": {
+    "description": "阅读Wazuh管理器配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "manager:read"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /manager/status",
+      "GET /manager/info",
+      "GET /manager/configuration",
+      "GET /manager/stats",
+      "GET /manager/stats/hourly",
+      "GET /manager/stats/weekly",
+      "GET /manager/stats/analysisd",
+      "GET /manager/stats/remoted",
+      "GET /manager/logs",
+      "GET /manager/logs/summary",
+      "PUT /manager/configuration",
+      "PUT /manager/restart",
+      "GET /manager/configuration/validation",
+      "GET /manager/configuration/{component}/{configuration}"
+    ]
+  },  
+  "manager:update_config": {
+    "description": "更新Wazuh管理器节点的配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "manager:update_config"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "PUT /manager/configuration"
+    ]
+  },
+  "manager:read_api_config": {
+    "description": "阅读Wazuh管理器API配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "manager:read_api_config"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /manager/api/config"
+    ]
+  },
+  "manager:update_api_config": {
+    "description": "修改Wazuh管理器API配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "manager:update_api_config"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /manager/api/config",
+      "DELETE /manager/api/config"
+    ]
+  },
+  "manager:restart": {
+    "description": "重启Wazuh管理器节点",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "manager:restart"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "PUT /manager/restart"
+    ]
+  },
+  "mitre:read": {
+    "description": "从MITRE数据库获取攻击信息。",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "mitre:read"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /mitre"
+    ]
+  },
+  "rules:read": {
+    "description": "阅读规则文件",
+    "resources": [
+      "rule:file"
+    ],
+    "example": {
+      "actions": [
+        "rules:read"
+      ],
+      "resources": [
+        "rule:file:0610-win-ms_logs_rules.xml"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /rules",
+      "GET /rules/groups",
+      "GET /rules/requirement/{requirement}",
+      "GET /rules/files",
+      "GET /rules/files/{filename}/download"
+    ]
+  },
+  "rules:update": {
+    "description": "更新规则文件",
+    "resources": [
+      "rule:file",
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "rules:update"
+      ],
+      "resources": [
+        "rule:file:0610-win-ms_logs_rules.xml"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /rules/files"
+    ]
+  },
+  "rules:delete": {
+    "description": "删除规则文件",
+    "resources": [
+      "rule:file"
+    ],
+    "example": {
+      "actions": [
+        "rules:delete"
+      ],
+      "resources": [
+        "rule:file:0610-win-ms_logs_rules.xml"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "DELETE /rules/files"
+    ]
+  },  
+  "sca:read": {
+    "description": "获取给定代理的配置评估中分析的策略列表",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "sca:read"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /sca/{agent_id}",
+      "GET /sca/{agent_id}/checks/{policy_id}"
+    ]
+  },
+  "syscheck:run": {
+    "description": "运行syscheck",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "syscheck:run"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /syscheck"
+    ]
+  },
+  "syscheck:read": {
+    "description": "从syscheck的数据库读取信息",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "syscheck:read"
+      ],
+      "resources": [
+        "agent:id:011"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /syscheck/{agent_id}",
+      "GET /syscheck/{agent_id}/last_scan"
+    ]
+  },
+  "syscheck:clear": {
+    "description": "为指定的代理清除syscheck数据库",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "syscheck:clear"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "DELETE /syscheck/{agent_id}",
+      "DELETE /experimental/syscheck"
+    ]
+  },
+  "decoders:read": {
+    "description": "读取解码器文件",
+    "resources": [
+      "decoder:file"
+    ],
+    "example": {
+      "actions": [
+        "decoders:read"
+      ],
+      "resources": [
+        "decoder:file:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /decoders",
+      "GET /decoders/files",
+      "GET /decoders/files/{filename}/download",
+      "GET /decoders/parents"
+    ]
+  },
+  "decoders:update": {
+    "description": "更新解码器文件",
+    "resources": [
+      "decoder:file",
+      "*:*"   
+    ],
+    "example": {
+      "actions": [
+        "decoders:update"
+      ],
+      "resources": [
+        "decoder:file:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /decoders/files"
+    ]
+  },
+  "decoders:delete": {
+    "description": "删除解码器文件",
+    "resources": [
+      "decoder:file"
+    ],
+    "example": {
+      "actions": [
+        "decoders:delete"
+      ],
+      "resources": [
+        "decoder:file:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "DELETE /decoders/files"
+    ]
+  },
+  "syscollector:read": {
+    "description": "获取指定代理的syscollector信息",
+    "resources": [
+      "agent:id"
+    ],
+    "example": {
+      "actions": [
+        "syscollector:read"
+      ],
+      "resources": [
+        "agent:id:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /experimental/syscollector/hardware",
+      "GET /experimental/syscollector/netaddr",
+      "GET /experimental/syscollector/netiface",
+      "GET /experimental/syscollector/netproto",
+      "GET /experimental/syscollector/os",
+      "GET /experimental/syscollector/packages",
+      "GET /experimental/syscollector/ports",
+      "GET /experimental/syscollector/processes",
+      "GET /experimental/syscollector/hotfixes",
+      "GET /syscollector/{agent_id}/hardware",
+      "GET /syscollector/{agent_id}/hotfixes",
+      "GET /syscollector/{agent_id}/netaddr",
+      "GET /syscollector/{agent_id}/netiface",
+      "GET /syscollector/{agent_id}/netproto",
+      "GET /syscollector/{agent_id}/os",
+      "GET /syscollector/{agent_id}/packages",
+      "GET /syscollector/{agent_id}/ports",
+      "GET /syscollector/{agent_id}/processes"
+    ]
+  },
+  "security:read": {
+    "description": "允许读取关于系统安全资源的信息",
+    "resources": [
+      "policy:id",
+      "role:id",
+      "user:id"
+    ],
+    "example": {
+      "actions": [
+        "security:read"
+      ],
+      "resources": [
+        "policy:id:*",
+        "role:id:2",
+        "user:id:5"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /security/roles",
+      "GET /security/policies",
+      "GET /security/users"
+    ]
+  },
+  "security:create": {
+    "description": "创建新的系统安全资源",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "security:create"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "POST /security/roles",
+      "POST /security/policies"
+    ]
+  },
+  "security:delete": {
+    "description": "删除系统安全资源",
+    "resources": [
+      "policy:id",
+      "role:id",
+      "user:id"
+    ],
+    "example": {
+      "actions": [
+        "security:update"
+      ],
+      "resources": [
+        "policy:id:*",
+        "role:id:3",
+        "user:id:4"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "DELETE /security/roles",
+      "DELETE /security/policies",
+      "DELETE /security/roles/{role_id}/policies",
+      "DELETE /security/users/{user_id}/roles",
+      "DELETE /security/users"
+    ]
+  },
+  "security:update": {
+    "description": "允许更新系统的安全资源信息",
+    "resources": [
+      "policy:id",
+      "role:id",
+      "user:id"
+    ],
+    "example": {
+      "actions": [
+        "security:update"
+      ],
+      "resources": [
+        "policy:id:*",
+        "role:id:4",
+        "user:id:3"
+      ],
+      "effect": "deny"
+    },
+    "related_endpoints": [
+      "PUT /security/roles/{role_id}",
+      "PUT /security/policies/{policy_id}",
+      "POST /security/roles/{role_id}/policies",
+      "POST /security/users/{user_id}/roles",
+      "PUT /security/users/{user_id}"
+    ]
+  },
+  "security:create_user": {
+    "description": "创建新的系统用户",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "security:create_user"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "POST /security/users"
+    ]
+  },
+  "security:read_config": {
+    "description": "读取当前安全配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "security:read_config"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "GET /security/config"
+    ]
+  },
+  "security:update_config": {
+    "description": "更新当前的安全配置",
+    "resources": [
+      "*:*"
+    ],
+    "example": {
+      "actions": [
+        "security:update_config"
+      ],
+      "resources": [
+        "*:*:*"
+      ],
+      "effect": "allow"
+    },
+    "related_endpoints": [
+      "PUT /security/config",
+      "DELETE /security/config"
+    ]
+  }
+}
